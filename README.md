@@ -19,14 +19,14 @@ For this project, you will be starting with an application which runs very slowl
 
 Once you pull down the application from GitHub, run `bundle install` and `rake db:migrate`, then follow the steps below.
 
-* [ ] Run `rake db:seed`.  When it is finished, it  will tell you how long the process took (in seconds).  Record the amount of time. _2350.942623 seconds_
-* [ ] Turn on your server and open your browser to `localhost:3000`.  You will have to sort out which parameters you need to pass it.
-* [ ] Open Chrome's timeline in developer tools, then hit Cmd-R on your keyboard.  The timeline will track time to load the page.  Record the following:
-  * [ ] Total time in Chrome's timeline
-  * [ ] "Idle" time in Chrome's timeline
-  * [ ] The time given by Rails at the top of the page
-  * [ ] The time given by Rails at the bottom of the page (sorry for the long scroll)
-  * [ ] Explain what these four numbers are and which are subsets of the others
+* [x] Run `rake db:seed`.  When it is finished, it  will tell you how long the process took (in seconds).  Record the amount of time. _2350.942623 seconds_
+* [x] Turn on your server and open your browser to `localhost:3000`.  You will have to sort out which parameters you need to pass it.
+* [x] Open Chrome's timeline in developer tools, then hit Cmd-R on your keyboard.  The timeline will track time to load the page.  Record the following:
+  * [x] Total time in Chrome's timeline _3907 seconds_
+  * [x] "Idle" time in Chrome's timeline _crashed without giving info_
+  * [x] The time given by Rails at the top of the page _1320.891084 seconds_
+  * [x] The time given by Rails at the bottom of the page (sorry for the long scroll) _1322.042374 seconds_
+  * [x] Explain what these four numbers are and which are subsets of the others _The time given by Rails is a subset of the total time. It took very long to search the database, but not long at all to render as HTML_
 * [ ] Add appropriate indices to the data structure (via migrations).
 * [ ] Record how long it takes to run the migrations that add indices.
 * [ ] Reload the root page and record the four time numbers again.  Calculate your percent improvement in runtime.
