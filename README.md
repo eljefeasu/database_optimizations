@@ -29,7 +29,11 @@ Once you pull down the application from GitHub, run `bundle install` and `rake d
   * [x] Explain what these four numbers are and which are subsets of the others _The time given by Rails is a subset of the total time. It took very long to search the database, but not long at all to render as HTML_
 * [x] Add appropriate indices to the data structure (via migrations).
 * [x] Record how long it takes to run the migrations that add indices. _0.6943 sec_
-* [ ] Reload the root page and record the four time numbers again.  Calculate your percent improvement in runtime.
+* [x] Reload the root page and record the four time numbers again.  Calculate your percent improvement in runtime.
+  * [x] Total time in Chrome's timeline _18.7 seconds_
+  * [x] "Idle" time in Chrome's timeline _882.49 ms_
+  * [x] The time given by Rails at the top of the page _5.577238 seconds_
+  * [x] The time given by Rails at the bottom of the page (sorry for the long scroll) _6.833341 seconds_
 * [ ] Examine the code that is run when the root path loads.  Modify the controller commands which access the database to make them more efficient.
 * [ ] Calculate your percent improvement in runtime.
 * [ ] Once you have optimized your code as much as you think you can, drop the database, run `rake db:migrate`, and then time how long it takes to run `rake db:seed`.  Was there an improvement or a worsening of runtime?  By what percent and why?
