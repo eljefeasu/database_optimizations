@@ -40,8 +40,8 @@ Once you pull down the application from GitHub, run `bundle install` and `rake d
   * [x] "Idle" time in Chrome's timeline _897.81 ms_
   * [x] The time given by Rails at the top of the page _0.016127 seconds_
   * [x] The time given by Rails at the bottom of the page (sorry for the long scroll) _3.02472 seconds_
-* [ ] Once you have optimized your code as much as you think you can, drop the database, run `rake db:migrate`, and then time how long it takes to run `rake db:seed`.  Was there an improvement or a worsening of runtime?  By what percent and why?
-* [ ] Which is faster: (a) running `rake db:seed` without indices and then running a migration to add indices, or (b) adding indices during your initial `rake db:migrate`, then running `rake db:seed`?
+* [x] Once you have optimized your code as much as you think you can, drop the database, run `rake db:migrate`, and then time how long it takes to run `rake db:seed`.  Was there an improvement or a worsening of runtime?  By what percent and why? _1882.299137 seconds, it was much faster but I think it was because I was streaming The Walking Dead during the first seed and not doing anything during the second seed. I would have thought it would take longer to seed the second time based on creating the indices._
+* [x] Which is faster: (a) running `rake db:seed` without indices and then running a migration to add indices, or (b) adding indices during your initial `rake db:migrate`, then running `rake db:seed`? _I think (a), running db:seed before adding indices_
 
 You've done a thorough job of analyzing runtime, but now take a look at storage space:
 

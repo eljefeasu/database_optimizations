@@ -3,10 +3,6 @@ class ReportsController < ApplicationController
 
   def all_data
     @start_time = Time.now
-
-    @sequences = []
-    @genes = []
-    @hits = []
     @assembly = Assembly.find_by_name(params[:name])
     @hits = @assembly.hits.order(percent_similarity: :desc)
 
