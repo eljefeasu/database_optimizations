@@ -27,7 +27,7 @@ Once you pull down the application from GitHub, run `bundle install` and `rake d
   * [x] The time given by Rails at the top of the page _1320.891084 seconds_
   * [x] The time given by Rails at the bottom of the page (sorry for the long scroll) _1322.042374 seconds_
   * [x] Explain what these four numbers are and which are subsets of the others _The time given by Rails is a subset of the total time. It took very long to search the database, but not long at all to render as HTML_
-* [ ] Add appropriate indices to the data structure (via migrations).
+* [x] Add appropriate indices to the data structure (via migrations).
 * [ ] Record how long it takes to run the migrations that add indices.
 * [ ] Reload the root page and record the four time numbers again.  Calculate your percent improvement in runtime.
 * [ ] Examine the code that is run when the root path loads.  Modify the controller commands which access the database to make them more efficient.
