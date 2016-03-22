@@ -65,3 +65,4 @@ The search should also be case insensitive.
 ##### Estimate
 
 I think part one will take 4 hours and part two will take 2 hours.
+*_Part one took closer to 5 hours and part two took 2 hours_*

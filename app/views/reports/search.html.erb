@@ -1,47 +1,58 @@
 <% if request.post? %>
+
+  <p>Total time before HTML is generated: <%= Time.now - @start_time %> s</p>
+  <p>Memory used before HTML is generated: <%= @memory_used %> MB</p>
+
   <% if !@assemblies.empty? %>
-    <table>
-      <thead>
-        <tr>
-          <th>Assembly Matches</th>
-        </tr>
-        <tr>
-          <th>Name</th>
-          <th>Run On</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @assemblies.each do |a| %>
+    <% @assemblies.each do |a| %>
+      <table>
+        <thead>
           <tr>
-            <td><%= a.name %></td>
-            <td><%= a.run_on %></td>
+            <th>Assembly Matches</th>
+            <th><%= a.name %></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+          <tr>
+            <th>Matching Gene Name</th>
+            <th>Matching DNA</th>
+            <th>Percent Similarity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% a.hits.each do |h| %>
+            <tr>
+              <td><%= h.match_gene_name %></td>
+              <td><%= h.match_gene_dna.first(100) %></td>
+              <td><%= h.percent_similarity %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   <% end %>
   <% if !@genes.empty? %>
-    <table>
-      <thead>
-        <tr>
-          <th align="left">Gene Matches</th>
-        </tr>
-        <tr>
-          <th>Starting Position</th>
-          <th>Direction</th>
-          <th align="left">DNA</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @genes.each do |g| %>
+    <% @genes.each do |g| %>
+      <table>
+        <thead>
           <tr>
-            <td><%= g.starting_position %></td>
-            <td><%= g.direction %></td>
-            <td><%= g.dna %></td>
+            <th align="left">Gene Matches</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+          <tr>
+            <th>Matching Gene Name</th>
+            <th>Matching DNA</th>
+            <th>Percent Similarity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% g.hits.each do |h| %>
+            <tr>
+              <td><%= h.match_gene_name %></td>
+              <td><%= h.match_gene_dna.first(100) %></td>
+              <td><%= h.percent_similarity %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   <% end %>
   <% if !@hits.empty? %>
     <table>
@@ -60,12 +71,16 @@
           <tr>
             <td><%= h.match_gene_name %></td>
             <td><%= h.percent_similarity %></td>
-            <td><%= h.match_gene_dna %></td>
+            <td><%= h.match_gene_dna.first(100) %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
   <% end %>
+
+  <p>Total time after HTML is generated: <%= Time.now - @start_time %> s</p>
+  <p>Memory used after HTML is generated: <%= memory_in_mb %> MB</p>
+  
 <% else %>
   <form method="post" action="/reports/search">
     <p>

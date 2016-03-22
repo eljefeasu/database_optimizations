@@ -10,10 +10,12 @@ class ReportsController < ApplicationController
   end
 
   def search
+    @start_time = Time.now
     name = params["name"]
     @assemblies = Assembly.where("name LIKE ?", "%#{name}%")
     @genes = Gene.where("dna like ?", "%#{name}%")
     @hits = Hit.where("match_gene_name like ?", "%#{name}%")
+    @memory_used = memory_in_mb
   end
 
   private def memory_in_mb
