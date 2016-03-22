@@ -1,0 +1,77 @@
+<% if request.post? %>
+  <% if !@assemblies.empty? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Assembly Matches</th>
+        </tr>
+        <tr>
+          <th>Name</th>
+          <th>Run On</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @assemblies.each do |a| %>
+          <tr>
+            <td><%= a.name %></td>
+            <td><%= a.run_on %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <% if !@genes.empty? %>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Gene Matches</th>
+        </tr>
+        <tr>
+          <th>Starting Position</th>
+          <th>Direction</th>
+          <th align="left">DNA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @genes.each do |g| %>
+          <tr>
+            <td><%= g.starting_position %></td>
+            <td><%= g.direction %></td>
+            <td><%= g.dna %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <% if !@hits.empty? %>
+    <table>
+      <thead>
+        <tr>
+          <th align="left">Hits Matches</th>
+        </tr>
+        <tr>
+          <th>Match Gene Name</th>
+          <th>Percent Similarity</th>
+          <th align="left">Match Gene DNA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @hits.each do |h| %>
+          <tr>
+            <td><%= h.match_gene_name %></td>
+            <td><%= h.percent_similarity %></td>
+            <td><%= h.match_gene_dna %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+<% else %>
+  <form method="post" action="/reports/search">
+    <p>
+      <label for="username">Search for something:  </label>
+      <input type="text" id="name" name="name"></input>
+      <button name="theButton">Search</button>
+    </p>
+  </form>
+<% end %>
