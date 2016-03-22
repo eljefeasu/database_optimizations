@@ -66,3 +66,6 @@ The search should also be case insensitive.
 
 I think part one will take 4 hours and part two will take 2 hours.
 *_Part one took closer to 5 hours and part two took 2 hours_*
+
+### Day Two
+Page took almost 3 minutes to load importing CSV in the foreground.

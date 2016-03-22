@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get 'reports/search'
   post 'reports/search'
 
+  get 'reports/import'
+  post 'reports/thank_you'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
