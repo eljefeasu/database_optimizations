@@ -10,21 +10,11 @@ class ReportsController < ApplicationController
   end
 
   def search
-    # @hits = Hit.joins("JOIN genes ON genes.id = hits.subject_id AND hits.subject_type = 'Gene'")
-    #    .joins("JOIN sequences ON sequences.id = genes.sequence_id")
-    #    .joins("JOIN assemblies ON assemblies.id = sequences.assembly_id")
-    #    .where("assemblies.name LIKE '%?%' OR genes.dna LIKE '%?%' OR hits.match_gene_name LIKE '%?%',
-    #         params[:search], params[:search], params[:search])
-    #    .order("hits.percent_similarity DESC")
-
-
-
-    @start_time = Time.now
-    name = params["name"]
-    @assemblies = Assembly.where("name LIKE ?", "%#{name}%")
-    @genes = Gene.where("dna like ?", "%#{name}%")
-    @hits = Hit.where("match_gene_name like ?", "%#{name}%")
-    @memory_used = memory_in_mb
+    if request.post?
+      @name = params[:name]
+      @address = params[:address]
+      ExportFileJob.perform_later(@name, @address)
+    end
   end
 
   def import
