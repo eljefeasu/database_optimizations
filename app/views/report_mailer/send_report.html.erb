@@ -1,5 +1,6 @@
 <h1>Your Report Has Been Generated!</h1>
 
 <p>
-  <%= @greeting %>, thank you for using our service. We hope to hear from you soon!
+  <%= @greeting %>, thank you for using our service. We hope to hear from you soon! <br>
+  Here is the link to your file: <%= link_to "Your Report", "#{@url}" %>
 </p>

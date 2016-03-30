@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'aws-sdk', '~> 1.6'
+
 gem 'faker'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

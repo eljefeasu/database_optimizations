@@ -21,6 +21,21 @@ class ExportFileJob < ActiveJob::Base
         csv << [h.match_gene_name, h.match_gene_dna.first(100), h.percent_similarity]
       end
     end
-    ReportMailer.send_report(file_path, address).deliver_now
+
+    file = File.open(file_path)
+
+    AWS.config(
+        :access_key_id => ENV['AWS_ACCESS_KEY_ID_DB'],
+        :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY_DB']
+      )
+    s3 = AWS::S3.new
+    bucket = s3.buckets[ENV['S3_BUCKET_NAME_DB']]
+    object = bucket.objects[File.basename(file)]
+    # the file is not the content of the file is the route
+    object.write(file: file)
+    # save the file and return an url to download it
+    url = object.url_for(:read)
+
+    ReportMailer.send_report(url, address).deliver_now
   end
 end
